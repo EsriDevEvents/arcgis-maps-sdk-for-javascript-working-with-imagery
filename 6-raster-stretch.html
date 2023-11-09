@@ -16,8 +16,8 @@
       type="module"
       src="https://js.arcgis.com/calcite-components/1.0.7/calcite.esm.js"
     ></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css" integrity="sha512-WDk6RzwygsN9KecRHAfm9HTN87LQjqdygDmkHSJxVkVI7ErCZ8ZWxP6T8RvBujY1n2/E4Ac+bn2ChXnp5rnnHA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/intellij-light.min.css" integrity="sha512-rxoFrVtnfvSuel468Qr3r4djCRmFKs4DiJXUnOeaA/+uac9DkEOTEhfkcwUNiGTiA4jr6pBvXk6leEhweuGaVg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css" integrity="sha512-WDk6RzwygsN9KecRHAfm9HTN87LQjqdygDmkHSJxVkVI7ErCZ8ZWxP6T8RvBujY1n2/E4Ac+bn2ChXnp5rnnHA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/intellij-light.min.css" integrity="sha512-rxoFrVtnfvSuel468Qr3r4djCRmFKs4DiJXUnOeaA/+uac9DkEOTEhfkcwUNiGTiA4jr6pBvXk6leEhweuGaVg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"
@@ -182,7 +182,7 @@ layer.renderer = renderer;
       "esri/layers/ImageryTileLayer",
       "esri/layers/GraphicsLayer",
       "esri/renderers/RasterStretchRenderer",
-      "esri/widgets/Expand"
+      "esri/widgets/Expand",
     ], (
       promiseUtils,
       Graphic,
@@ -235,10 +235,13 @@ layer.renderer = renderer;
           },
         });
 
-        view.ui.add(new Expand({
-          content: document.getElementById("codeDiv"),
-          view
-        }), "top-right")
+        view.ui.add(
+          new Expand({
+            content: document.getElementById("codeDiv"),
+            view,
+          }),
+          "top-right"
+        );
 
         // view.ui.add(document.getElementById("codeDiv"), "top-right");
 
@@ -424,7 +427,7 @@ layer.renderer = renderer;
           };
         }
 
-        hljs.highlightAll();
+        // hljs.highlightAll();
       })());
   </script>
 </html>
