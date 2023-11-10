@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>
+      1-bringing-data
+    </title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.26/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.26/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      #infoDiv {
+        padding: 10px;
+        width: 300px;
+      }
+    </style>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/ImageryTileLayer",
+        "esri/layers/Layer",
+        "esri/Graphic"
+      ], (Map, MapView, ImageryTileLayer, Layer, Graphic) => (async () => {
+
+        const itemId = "6f1300bdf5b446098986e9705a067908";
+        // const itemId = "";
+
+        /*/
+        const layer = new ImageryTileLayer({
+          portalItem: {
+            id: itemId
+          }
+        });
+
+        /*/
+        const layer = await Layer.fromPortalItem({
+          portalItem: {
+            id: itemId
+          }
+        });
+        //*/
+
+        const map = new Map({
+          basemap: "topo-vector",
+          layers: [layer]
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map
+        });
+
+        //*/
+        // zoom to the fullExtent of the layer when layer loads
+        const layerView = await view.whenLayerView(layer);
+        view.goTo(layer.fullExtent);
+        //*/
+
+      })());
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
