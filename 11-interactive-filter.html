@@ -142,7 +142,7 @@
 
       window.layer = layer;
       const map = new Map({
-        basemap: "streets",
+        basemap: "streets-vector",
         layers: [layer]
       });
       const view = new MapView({
@@ -204,7 +204,7 @@
           }
         });
       });
-      hljs.highlightAll();
+      // hljs.highlightAll();
     }
     demo();
   </script>
